@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <title><%= @item.title %> - monolist</title>
+  <meta name="description" content="see who have and want <%= @item.title %> at monolist">
+  <meta name="keywords" content="<%= @item.title %>, amazon">
+<% end %>
+
 <div class="container">
   <div class="container-inner inner-sm clearfix">
     <div class="item-single-main">
@@ -19,16 +25,21 @@
       <div class="side-box">
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
-          <% binding.pry %>
           <% # TODO Haveしたユーザー一覧 %>
-          <%= Have.where(item_id: @item.id) %>
+          <% haves = @item.have_users %>
+          <% haves.each do |user| %>
+            <%= gravatar_withlink user, size: 40 %>
+          <% end %>
         </div>
       </div>
       <div class="side-box">
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
           <% # TODO Wantしたユーザー一覧 %>
-          <%= Want.where(item_id: @item.id) %>
+          <% wants = @item.want_users %>
+          <% wants.each do |user| %>
+            <%= gravatar_withlink user, size: 40 %>
+          <% end %>
         </div>
       </div>
       <div class="text-center">
