@@ -15,6 +15,20 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+                <%= link_to ranking_have_path do %>
+                  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                  see what people HAVE
+                <% end %>
+            </li>
+            <li>
+                <%= link_to ranking_want_path do %>
+                  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                  see what people WANT
+                <% end %>
+            </li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <% unless logged_in? %>
               <li><%= link_to "新規登録", signup_path %></li>

@@ -1,0 +1,36 @@
+<div class="container" style="padding:0">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          Most people Want these items...
+        </div>
+        <div class="row" style="padding:20px 50px;">
+            <table class="table">
+                <tbody>
+                    <% @rank_wants.each do |array| %>
+                        <tr>
+                          <td class="col-md-2 text-center">
+                            <% if array.item.medium_image.present? %>
+                              <%= image_tag(array.item.medium_image , alt: array.item.title ) %>
+                            <% else %>
+                              <%= image_tag("no-image.png" , alt: array.item.title ) %>
+                            <% end %>
+                          </td>
+                          <td class="col-md-6">
+                            <%= array.item.title %>
+                          </td>
+                          <td class="col-md-1">
+                            <%= array.want_count %> people(s)
+                          </td>
+                          <td class="col-md-1">
+                            <%= link_to item_path(array.item_id) do %>
+                              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                              check details
+                            <% end %>
+                          </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
